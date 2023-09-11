@@ -23,7 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'api'], function($routes){
     Route::post('/register', [UserController::class, 'register']);
     Route::post('/login', [UserController::class, 'login']);
+    Route::post('/logout', [UserController::class, 'logout']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::post('/role/create', [RoleUserController::class, 'create']);
-    Route::get('/role', [RoleUserController::class, 'show']);
+    Route::get('/role', [RoleUserController::class, 'showRole']);
 });

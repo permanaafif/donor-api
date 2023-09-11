@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RoleUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -90,21 +91,38 @@ class UserController extends Controller
     }
 
     public function profile(){
-        return response()->json(['m' => User::all()]);
+        $user = auth()->guard('api')->user();
+         // Dapatkan data peran (role) pengguna
+        $role = RoleUser::find($user->role_id);
+
+        // Pastikan peran (role) ditemukan
+        if (!$role) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Role not found'
+            ], 404);
+        }
+
+        // Menggabungkan data pengguna dan data peran dalam respons
+        $data = [
+            'user' => $user,
+            'role' => $role
+        ];
+         return response()->json($data);
     }
 
-    // public function logout(Request $request)
-    // {        
-    //     //remove token
-    //     $removeToken = JWTAuth::invalidate(JWTAuth::getToken());
+    public function logout(Request $request)
+    {        
+        //remove token
+        $removeToken = JWTAuth::invalidate(JWTAuth::getToken());
 
-    //     if($removeToken) {
-    //         //return response JSON
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => 'Logout Berhasil!',  
-    //         ]);
-    //     }
-    // }
+        if($removeToken) {
+            //return response JSON
+            return response()->json([
+                'success' => true,
+                'message' => 'Logout Berhasil!',  
+            ]);
+        }
+    }
     
 }
