@@ -24,6 +24,6 @@ Route::group(['middleware' => 'api'], function($routes){
     Route::post('/register', [UserController::class, 'register']);
     Route::post('/login', [UserController::class, 'login']);
     Route::get('/profile', [UserController::class, 'profile']);
-    // Route::post('/role/create', [RoleUserController::class, 'create']);
-    // Route::get('/role', [RoleUserController::class, 'show']);
+    Route::post('/role/create', [RoleUserController::class, 'create']);
+    Route::get('/role', [RoleUserController::class, 'show']);
 });

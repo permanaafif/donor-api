@@ -82,8 +82,10 @@ class UserController extends Controller
         //if auth success
         return response()->json([
             'success' => true,
-            // 'user'    => auth()->guard('api')->user(),    
-            'token'   => $token   
+            'user'    => auth()->guard('api')->user(),    
+            'token'   => $token,
+            'token_type' => 'bearer',
+            'exp_token' => JWTAuth::factory()->getTTL()*1
         ], 200);
     }
 
