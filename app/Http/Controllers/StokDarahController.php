@@ -17,7 +17,7 @@ class StokDarahController extends Controller
     public function create(Request $request){
         //set validation
         $validator = Validator::make($request->all(), [
-            'id_golongan_darah' => 'required|min:1',
+            'id_golongan_darah' => 'required|string',
             'jumlah'=> 'required'
         ]);
 
@@ -50,6 +50,6 @@ class StokDarahController extends Controller
 
     public function show()
     {
-        return response()->json(['role' => StokDarah::all()]);
+        return response()->json(['stok_darah' => StokDarah::all()]);
     }
 }
