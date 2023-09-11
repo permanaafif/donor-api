@@ -44,7 +44,7 @@ class RoleUserController extends Controller
         ], 409);
     }
 
-    public function showRole()
+    public function show()
     {
         return response()->json(['role' => RoleUser::all()]);
     }

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GolonganDarahController;
 use App\Http\Controllers\RoleUserController;
+use App\Http\Controllers\StokDarahController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,5 +28,9 @@ Route::group(['middleware' => 'api'], function($routes){
     Route::post('/logout', [UserController::class, 'logout']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::post('/role/create', [RoleUserController::class, 'create']);
-    Route::get('/role', [RoleUserController::class, 'showRole']);
+    Route::get('/role', [RoleUserController::class, 'show']);
+    Route::get('/stok-darah', [StokDarahController::class, 'show']);
+    Route::post('/stok-darah/create', [StokDarahController::class, 'create']);
+    Route::get('/golongan-darah', [GolonganDarahController::class, 'show']);
+    Route::post('/golongan-darah/create', [GolonganDarahController::class, 'create']);
 });

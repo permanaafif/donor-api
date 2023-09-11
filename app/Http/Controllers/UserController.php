@@ -90,6 +90,15 @@ class UserController extends Controller
         ], 200);
     }
 
+    public function show(){
+        // Dapatkan semua pengguna bersama dengan data peran (role) mereka
+        $usersWithRoles = User::with('role')->get();
+
+        return response()->json([
+            'users' => $usersWithRoles,
+        ]);
+    }
+
     public function profile(){
         $user = auth()->guard('api')->user();
          // Dapatkan data peran (role) pengguna

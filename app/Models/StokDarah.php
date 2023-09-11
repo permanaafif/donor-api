@@ -23,7 +23,7 @@ class StokDarah extends Authenticatable implements JWTSubject
     }
 
     protected $fillable = [
-        'golongan_darah',
+        'id_golongan_darah',
         'jumlah'
     ];
 
