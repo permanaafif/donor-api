@@ -83,7 +83,7 @@ class PendonorController extends Controller
         //get credentials from request
         $credentials = $request->only('kode_pendonor', 'password');
 
-        if (!$token = auth()->guard('api')->attempt($credentials)) {
+        if (!$token = auth()->guard('api2')->attempt($credentials)) {
             return response()->json([
                 'success' => false,
                 'message' => 'Kode pendonor atau Password Anda salah'
@@ -93,7 +93,7 @@ class PendonorController extends Controller
         //if auth success
         return response()->json([
             'success' => true,
-            'user'    => auth()->guard('api')->user(),    
+            'user'    => auth()->guard('api2')->user(),    
             'token'   => $token,
             'token_type' => 'bearer',
             'exp_token' => JWTAuth::factory()->getTTL()*1

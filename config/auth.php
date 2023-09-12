@@ -44,6 +44,10 @@ return [
             'driver' => 'jwt',  
             'provider' => 'users',
         ],
+        'api2' => [                  
+            'driver' => 'jwt',  
+            'provider' => 'pendonors',
+        ],
     ],
 
     /*
@@ -67,6 +71,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'pendonors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pendonor::class,
         ],
 
         // 'users' => [
