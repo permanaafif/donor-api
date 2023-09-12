@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GolonganDarahController;
+use App\Http\Controllers\PendonorController;
 use App\Http\Controllers\RoleUserController;
 use App\Http\Controllers\StokDarahController;
 use App\Http\Controllers\UserController;
@@ -33,4 +34,8 @@ Route::group(['middleware' => 'api'], function($routes){
     Route::post('/stok-darah/create', [StokDarahController::class, 'create']);
     Route::get('/golongan-darah', [GolonganDarahController::class, 'show']);
     Route::post('/golongan-darah/create', [GolonganDarahController::class, 'create']);
+    Route::post('/pendonor/register', [PendonorController::class, 'register']);
+    Route::post('/pendonor/login', [PendonorController::class, 'login']);
+    Route::get('/pendonor/logout', [PendonorController::class, 'logout']);
+    Route::get('/pendonor', [PendonorController::class, 'show']);
 });

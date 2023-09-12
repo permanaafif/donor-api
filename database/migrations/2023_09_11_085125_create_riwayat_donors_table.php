@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pendonor')->nullable(false);
             $table->integer('jumlah_donor')->nullable(false);
             $table->dateTime('tanggal_donor')->nullable(false);
-            $table->unsignedBigInteger('id_stok_darah')->nullable(false);
             $table->timestamps();
         });
     }

@@ -21,6 +21,9 @@ class GolonganDarah extends Authenticatable implements JWTSubject
     public function stokDarah(){
         $this->hasOne(StokDarah::class, 'id_golongan_darah','id');
     }
+    public function pendonor(){
+        $this->hasMany(Pendonor::class, 'id_golongan_darah','id');
+    }
 
     protected $fillable = [
         'name',

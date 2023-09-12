@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('riwayat_ambils', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_riwayat_donor')->nullable(false);
+            $table->unsignedBigInteger('id_pendonor')->nullable(false);
             $table->integer('jumlah_ambil')->nullable(false);
             $table->dateTime('tanggal_ambil')->nullable(false);
             $table->string('penerima', 100)->nullable(false);
