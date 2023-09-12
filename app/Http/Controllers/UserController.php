@@ -95,29 +95,22 @@ class UserController extends Controller
         $usersWithRoles = User::with('role')->get();
 
         return response()->json([
+            'message' => 'success',
             'users' => $usersWithRoles,
         ]);
     }
-
-    public function profile(){
-        $user = auth()->guard('api')->user();
-         // Dapatkan data peran (role) pengguna
-        $role = RoleUser::find($user->role_id);
-
-        // Pastikan peran (role) ditemukan
-        if (!$role) {
+    
+    public function find($id){
+        // Dapatkan semua pengguna bersama dengan data peran (role) mereka
+        if($usersWithRoles = User::find($id)){
+            $usersWithRoles->load('role');
             return response()->json([
-                'success' => false,
-                'message' => 'Role not found'
-            ], 404);
+                'message' => 'success',
+                'user' => $usersWithRoles,
+            ]);
         }
+        return response()->json(['message' => 'data user not found']);
 
-        // Menggabungkan data pengguna dan data peran dalam respons
-        $data = [
-            'user' => $user,
-            'role' => $role
-        ];
-         return response()->json($data);
     }
 
     public function logout(Request $request)

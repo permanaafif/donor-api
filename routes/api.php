@@ -28,7 +28,8 @@ Route::group(['middleware' => 'api'], function($routes){
     Route::post('/register', [UserController::class, 'register']);
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/logout', [UserController::class, 'logout']);
-    Route::get('/profile', [UserController::class, 'profile']);
+    Route::get('/user', [UserController::class, 'show']);
+    Route::get('/user/{id}', [UserController::class, 'find']);
 
     //role user
     Route::post('/role/create', [RoleUserController::class, 'create']);
@@ -45,6 +46,6 @@ Route::group(['middleware' => 'api'], function($routes){
     //pendonor
     Route::post('/pendonor/register', [PendonorController::class, 'register']);
     Route::post('/pendonor/login', [PendonorController::class, 'login']);
-    Route::get('/pendonor/logout', [PendonorController::class, 'logout']);
+    Route::post('/pendonor/logout', [PendonorController::class, 'logout']);
     Route::get('/pendonor', [PendonorController::class, 'show']);
 });
