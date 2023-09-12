@@ -13,7 +13,7 @@ class PendonorController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['register','login']]);
+        $this->middleware('auth:api2', ['except' => ['register','login']]);
     }
     
     public function register(Request $request){

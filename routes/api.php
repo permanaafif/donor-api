@@ -24,16 +24,25 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::group(['middleware' => 'api'], function($routes){
+    //user
     Route::post('/register', [UserController::class, 'register']);
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/logout', [UserController::class, 'logout']);
     Route::get('/profile', [UserController::class, 'profile']);
+
+    //role user
     Route::post('/role/create', [RoleUserController::class, 'create']);
     Route::get('/role', [RoleUserController::class, 'show']);
+
+    //stok darah
     Route::get('/stok-darah', [StokDarahController::class, 'show']);
     Route::post('/stok-darah/create', [StokDarahController::class, 'create']);
+
+    //golongan darah
     Route::get('/golongan-darah', [GolonganDarahController::class, 'show']);
     Route::post('/golongan-darah/create', [GolonganDarahController::class, 'create']);
+
+    //pendonor
     Route::post('/pendonor/register', [PendonorController::class, 'register']);
     Route::post('/pendonor/login', [PendonorController::class, 'login']);
     Route::get('/pendonor/logout', [PendonorController::class, 'logout']);
